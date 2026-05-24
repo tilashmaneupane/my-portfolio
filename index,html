@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilashma Neupane | Frontend Developer Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            500: '#800000', /* Rich Maroon */
+                            600: '#700000',
+                            700: '#5a0000',
+                            800: '#450000',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Custom Scrollbar in Maroon Accent */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #374151;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #800000;
+        }
+        
+        /* Typing animation caret */
+        .typing-caret::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col antialiased">
+
+    <!-- Navigation Bar -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl font-bold tracking-tight bg-gradient-to-r from-primary-500 to-rose-600 bg-clip-text text-transparent hover:opacity-85 transition-all">
+                        TEE<span class="text-slate-900 dark:text-white">.DEV</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-medium hover:text-primary-500 transition-colors">Home</a>
+                    <a href="#about" class="text-sm font-medium hover:text-primary-500 transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium hover:text-primary-500 transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm font-medium hover:text-primary-500 transition-colors">Projects</a>
+                    <a href="#experience" class="text-sm font-medium hover:text-primary-500 transition-colors">Experience</a>
+                    <a href="#contact" class="text-sm font-medium hover:text-primary-500 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Actions (Theme Toggle & Menu Button) -->
+                <div class="flex items-center space-x-4">
+                    <!-- Light/Dark Mode Switcher -->
+                    <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+                        <i id="theme-toggle-dark-icon" class="hidden fas fa-moon text-slate-700 dark:text-slate-300 text-lg"></i>
+                        <i id="theme-toggle-light-icon" class="hidden fas fa-sun text-amber-500 text-lg"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle Mobile Menu">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#home" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Home</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">About</a>
+                <a href="#skills" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Skills</a>
+                <a href="#projects" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Projects</a>
+                <a href="#experience" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Experience</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden flex items-center min-h-screen">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute top-1/4 left-1/10 w-72 h-72 bg-primary-500/10 dark:bg-primary-500/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/10 w-96 h-96 bg-rose-500/10 dark:bg-rose-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left: Title and Introductions -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-semibold bg-primary-100 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-ping"></span> Open to Internships &amp; Roles
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+                        Hi, I'm <span class="bg-gradient-to-r from-primary-500 to-rose-600 bg-clip-text text-transparent">Tilashma Neupane</span>
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-slate-600 dark:text-slate-300 min-h-[40px]">
+                        I build <span id="typewriter" class="typing-caret text-primary-500 dark:text-primary-400"></span>
+                    </h2>
+                    <p class="max-w-xl mx-auto lg:mx-0 text-slate-500 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
+                        An aspiring frontend developer based in Kathmandu, Nepal. Highly motivated to translate design concepts into clean, fluid, and interactive web experiences.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl text-center bg-primary-500 hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-500 text-white font-semibold transition-all shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30">
+                            Get in Touch <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('resume-modal').classList.remove('hidden');" class="w-full sm:w-auto px-8 py-4 rounded-xl text-center border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold transition-all">
+                            View CV / Resume <i class="fas fa-file-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                    <!-- Social Links -->
+                    <div class="flex items-center justify-center lg:justify-start space-x-6 pt-6 text-slate-400 dark:text-slate-500">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400 text-2xl transition-colors" aria-label="GitHub Profile">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400 text-2xl transition-colors" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400 text-2xl transition-colors" aria-label="Twitter Profile">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Avatar Graphic Element -->
+                <div class="lg:col-span-5 flex justify-center mt-10 lg:mt-0">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                        <!-- Orbit Rings Decor -->
+                        <div class="absolute inset-0 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-full animate-[spin_60s_linear_infinite] pointer-events-none"></div>
+                        <div class="absolute inset-6 border border-primary-500/20 dark:border-primary-500/10 rounded-full animate-[spin_30s_linear_infinite] pointer-events-none"></div>
+                        
+                        <!-- Main Avatar Card -->
+                        <div class="absolute inset-12 bg-gradient-to-tr from-primary-500 to-rose-600 rounded-[2.5rem] shadow-2xl flex items-center justify-center overflow-hidden transform hover:scale-105 transition-all duration-500">
+                            <!-- Code Icon Illustration -->
+                            <svg class="w-3/4 h-3/4 text-white opacity-95" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+
+                        <!-- Floating Tech Tags -->
+                        <div class="absolute -top-4 right-8 bg-white dark:bg-slate-800 px-4 py-2 rounded-2xl shadow-xl flex items-center space-x-2 border border-slate-100 dark:border-slate-700 animate-[bounce_4s_infinite]">
+                            <span class="text-xl">🎨</span>
+                            <span class="text-sm font-semibold">Frontend</span>
+                        </div>
+                        <div class="absolute bottom-8 -left-4 bg-white dark:bg-slate-800 px-4 py-2 rounded-2xl shadow-xl flex items-center space-x-2 border border-slate-100 dark:border-slate-700 animate-[bounce_5s_infinite_1s]">
+                            <span class="text-xl">💻</span>
+                            <span class="text-sm font-semibold">Responsive Web</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-28 bg-white dark:bg-slate-950/40 border-t border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                <!-- About Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-sm font-bold tracking-wider text-primary-500 uppercase">About Me</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Eager to build, learn, and grow.</h2>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
+                        I am Tilashma Neupane, an enthusiastic developer based in Kathmandu. I enjoy writing clean code, building responsive user layouts, and learning standard web accessibility principles.
+                    </p>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                        Currently, I am looking to secure an internship or junior frontend role where I can apply my foundational skills, learn from experienced engineering teams, and contribute to impactful design systems.
+                    </p>
+                    <div class="pt-4 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-6">
+                        <div>
+                            <span class="block text-3xl font-bold text-primary-500">Fresher</span>
+                            <span class="text-sm text-slate-500 dark:text-slate-400">Ready to Start</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-rose-600">HTML/CSS</span>
+                            <span class="text-sm text-slate-500 dark:text-slate-400">Core Foundations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Skills Section (Empty Placeholder) -->
+                <div id="skills" class="lg:col-span-7 space-y-8">
+                    <div class="space-y-2">
+                        <span class="text-sm font-bold tracking-wider text-rose-600 uppercase">My Skillset</span>
+                        <h3 class="text-2xl sm:text-3xl font-bold">Tech Stack &amp; Tooling</h3>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-rose-50 dark:bg-rose-950/30 flex items-center justify-center text-primary-500 mx-auto">
+                            <i class="fas fa-tools text-2xl"></i>
+                        </div>
+                        <div class="space-y-2 max-w-md mx-auto">
+                            <h4 class="font-bold text-lg text-slate-800 dark:text-slate-200">Compiling Tech Arsenal...</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">
+                                I am currently polishing my skills in HTML, CSS, JavaScript, and modern tools. Detailed skill maps and self-assessment charts will appear here soon!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (Empty Placeholder) -->
+    <section id="projects" class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <span class="text-sm font-bold tracking-wider text-primary-500 uppercase">My Portfolio</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Recent Projects</h2>
+            <p class="text-slate-500 dark:text-slate-400">
+                A collection of responsive layouts, simple script tools, and frontend challenges.
+            </p>
+        </div>
+
+        <div class="max-w-xl mx-auto p-10 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/50 dark:border-slate-700/50 text-center space-y-5 shadow-sm">
+            <div class="w-16 h-16 rounded-2xl bg-rose-100 dark:bg-rose-500/10 flex items-center justify-center text-primary-500 mx-auto">
+                <i class="fas fa-code-branch text-3xl"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold">Projects Cooking Under the Hood</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">
+                    I am actively coding responsive interfaces, styling layouts, and writing DOM manipulation scripts. These will be deployed and fully listed here soon!
+                </p>
+            </div>
+            <div class="pt-2">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-sm font-semibold transition-all">
+                    Follow My GitHub <i class="fab fa-github ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section (Empty Placeholder) -->
+    <section id="experience" class="py-20 md:py-28 bg-slate-100 dark:bg-slate-950/20 border-t border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-sm font-bold tracking-wider text-primary-500 uppercase">My Journey</span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Work Experience &amp; Milestones</h2>
+            </div>
+
+            <div class="p-8 sm:p-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 text-center space-y-6 shadow-sm">
+                <div class="w-16 h-16 rounded-2xl bg-rose-100 dark:bg-rose-500/10 flex items-center justify-center text-primary-500 mx-auto animate-pulse">
+                    <i class="fas fa-star text-3xl"></i>
+                </div>
+                <div class="space-y-2 max-w-md mx-auto">
+                    <h3 class="text-xl font-bold">Ready to Start My First Professional Chapter</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        I'm eager to join an engineering environment as a junior frontend developer or intern. Looking forward to filling this space with meaningful team milestones soon!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Contact Info Panel -->
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-sm font-bold tracking-wider text-primary-500 uppercase">Connect with Me</span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Let's build something brilliant together.</h2>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
+                    Have an internship opportunity, a frontend task, or simply want to inquire about my self-study journey? Reach out directly.
+                </p>
+
+                <!-- Connection items -->
+                <div class="space-y-4 pt-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-950/30 flex items-center justify-center text-primary-500">
+                            <i class="fas fa-envelope text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-medium text-slate-500 dark:text-slate-400">Email Me</span>
+                            <a href="mailto:tilashmaneupane@gmail.com" class="text-sm font-semibold hover:text-primary-500 transition-colors">tilashmaneupane@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-950/30 flex items-center justify-center text-primary-500">
+                            <i class="fas fa-map-marker-alt text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-medium text-slate-500 dark:text-slate-400">Location</span>
+                            <span class="text-sm font-semibold">Kathmandu, Nepal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Form Card -->
+            <div class="lg:col-span-7">
+                <form id="contact-form" onsubmit="handleContactSubmit(event)" class="p-8 bg-white dark:bg-slate-800 rounded-3xl border border-slate-200/50 dark:border-slate-700/50 shadow-md space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="form-name" class="block text-sm font-semibold">Your Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="form-name" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-750 focus:ring-2 focus:ring-primary-500 outline-none text-sm transition-all" placeholder="Jane Doe">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="form-email" class="block text-sm font-semibold">Email Address <span class="text-red-500">*</span></label>
+                            <input type="email" id="form-email" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-750 focus:ring-2 focus:ring-primary-500 outline-none text-sm transition-all" placeholder="jane@example.com">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="form-subject" class="block text-sm font-semibold">Subject</label>
+                        <input type="text" id="form-subject" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-750 focus:ring-2 focus:ring-primary-500 outline-none text-sm transition-all" placeholder="Project Inquiry / Feedback">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="form-message" class="block text-sm font-semibold">Message <span class="text-red-500">*</span></label>
+                        <textarea id="form-message" required rows="5" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-750 focus:ring-2 focus:ring-primary-500 outline-none text-sm transition-all resize-none" placeholder="Let me know how we can collaborate..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-primary-500 hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-500 text-white font-semibold transition-all shadow-lg shadow-primary-500/20">
+                        Send message <i class="fas fa-paper-plane ml-2 text-xs"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200/60 dark:border-slate-800/60 py-8 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-sm text-slate-500 dark:text-slate-400">© <span id="footer-year">2026</span> Tilashma Neupane. All rights reserved.</span>
+            <div class="flex items-center space-x-6">
+                <a href="#home" class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary-500">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resume Viewer Modal -->
+    <div id="resume-modal" class="hidden fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
+        <div class="relative bg-white dark:bg-slate-900 w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between flex-shrink-0">
+                <h3 class="text-2xl font-bold">Resume / CV Viewer</h3>
+                <button onclick="document.getElementById('resume-modal').classList.add('hidden')" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500" aria-label="Close modal">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-8 space-y-6 overflow-y-auto text-sm">
+                <!-- Resume Layout representation -->
+                <div class="border border-slate-200 dark:border-slate-800 p-6 rounded-2xl bg-slate-50 dark:bg-slate-950">
+                    <div class="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold">Tilashma Neupane</h2>
+                            <p class="text-slate-500 dark:text-slate-400 font-medium">Kathmandu, Nepal | tilashmaneupane@gmail.com</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 dark:bg-rose-500/10 dark:text-rose-400">Open to Internships</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">SUMMARY</h4>
+                            <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Highly motivated aspiring frontend engineer based in Kathmandu. Specialized in producing clean semantic layouts, mastering modern stylesheets, and seeking to accelerate capabilities in production-level team architectures.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">CORE AREAS</h4>
+                            <p class="text-slate-500 dark:text-slate-400">HTML5, CSS3, JavaScript (ES6), Responsive Web Layouts, Git &amp; GitHub, Basic Framework Foundations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-end gap-3 flex-shrink-0">
+                <button onclick="document.getElementById('resume-modal').classList.add('hidden')" class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm">Close</button>
+                <button onclick="downloadResume()" class="px-5 py-2.5 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold flex items-center justify-center text-sm">
+                    Simulate Download <i class="fas fa-download ml-2 text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Feedback Toast (replacing alert()) -->
+    <div id="toast-success" class="hidden fixed bottom-6 right-6 z-50 p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/80 backdrop-blur-md border border-emerald-200 dark:border-emerald-800 shadow-2xl flex items-center space-x-3.5 max-w-sm animate-[slideIn_0.3s_ease-out]">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-500">
+            <i class="fas fa-check-circle text-lg"></i>
+        </div>
+        <div class="flex-1">
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Message Sent!</h4>
+            <p class="text-slate-500 dark:text-slate-400 text-xs">Tilashma will reply to your submission soon.</p>
+        </div>
+        <button onclick="document.getElementById('toast-success').classList.add('hidden')" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+            <i class="fas fa-times text-sm"></i>
+        </button>
+    </div>
+
+    <script>
+        // Set dynamic current year on footer
+        document.getElementById('footer-year').textContent = new Date().getFullYear().toString();
+
+        // Mobile Menu Toggling
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Sticky Navbar styling transition on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md', 'bg-white/95', 'dark:bg-slate-900/95');
+                navbar.classList.remove('bg-white/80', 'dark:bg-slate-900/80');
+            } else {
+                navbar.classList.remove('shadow-md', 'bg-white/95', 'dark:bg-slate-900/95');
+                navbar.classList.add('bg-white/80', 'dark:bg-slate-900/80');
+            }
+        });
+
+        // Theme Switcher implementation
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check and apply theme on load
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        }
+
+        // Toggle theme execution
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        });
+
+        // Close resume modal by clicking outside content wrapper
+        window.onclick = function(event) {
+            const resumeModal = document.getElementById('resume-modal');
+            if (event.target == resumeModal) {
+                resumeModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Simulating the CV download process
+        function downloadResume() {
+            const button = event.currentTarget;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner animate-spin"></i> Preparing...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Ready!';
+                
+                const link = document.createElement('a');
+                link.href = '#';
+                link.setAttribute('download', 'Tilashma_Neupane_Resume.pdf');
+                link.click();
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    document.getElementById('resume-modal').classList.add('hidden');
+                }, 1000);
+            }, 1200);
+        }
+
+        // Typing Typewriter effect for Hero introduction
+        const words = ["Frontend Interfaces.", "Responsive Designs.", "Web Experiences.", "Clean Layouts."];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterSpan = document.getElementById('typewriter');
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterSpan.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterSpan.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let delay = isDeleting ? 40 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                delay = 1800; // Pause at full word
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                delay = 300; // Pause before typing next word
+            }
+
+            setTimeout(typeEffect, delay);
+        }
+
+        // Run Typewriter initialization on DOM complete load
+        window.onload = function() {
+            typeEffect();
+        }
+
+        // Contact Submission Handler
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalBtnHtml = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-circle-notch animate-spin mr-2"></i> Processing...';
+
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Sent Successfully';
+                e.target.reset(); // clear form entries
+                
+                const toast = document.getElementById('toast-success');
+                toast.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 5000);
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }, 1000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
