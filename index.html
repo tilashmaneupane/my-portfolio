@@ -380,43 +380,203 @@
 
     <!-- Resume Viewer Modal -->
     <div id="resume-modal" class="hidden fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
-        <div class="relative bg-white dark:bg-slate-900 w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 max-h-[90vh] flex flex-col">
+        <div class="relative bg-white dark:bg-slate-900 w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 max-h-[92vh] flex flex-col">
             <!-- Modal Header -->
-            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between flex-shrink-0">
-                <h3 class="text-2xl font-bold">Resume / CV Viewer</h3>
-                <button onclick="document.getElementById('resume-modal').classList.add('hidden')" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500" aria-label="Close modal">
+            <div class="p-5 sm:p-6 border-b border-slate-150 dark:border-slate-800 flex items-center justify-between flex-shrink-0 bg-slate-50 dark:bg-slate-900">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Curriculum Vitae</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Tilashma Neupane — BSc CSIT Undergraduate</p>
+                </div>
+                <button onclick="document.getElementById('resume-modal').classList.add('hidden')" class="p-2 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-500 transition-colors" aria-label="Close modal">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            <!-- Modal Body -->
-            <div class="p-8 space-y-6 overflow-y-auto text-sm">
-                <!-- Resume Layout representation -->
-                <div class="border border-slate-200 dark:border-slate-800 p-6 rounded-2xl bg-slate-50 dark:bg-slate-950">
-                    <div class="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
-                        <div>
-                            <h2 class="text-xl font-bold">Tilashma Neupane</h2>
-                            <p class="text-slate-500 dark:text-slate-400 font-medium">Kathmandu, Nepal | tilashmaneupane@gmail.com</p>
+            
+            <!-- Modal Body (Two-Page Document View) -->
+            <div class="p-4 sm:p-8 space-y-8 overflow-y-auto bg-slate-100 dark:bg-slate-950 flex-1">
+                
+                <!-- PAGE 1 OF RESUME -->
+                <div class="relative bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 max-w-2xl mx-auto text-left text-slate-800 dark:text-slate-200 text-sm leading-relaxed">
+                    <!-- Page Number Watermark -->
+                    <span class="absolute top-4 right-6 text-xs font-bold text-slate-300 dark:text-slate-700 tracking-widest">PAGE 1</span>
+                    
+                    <!-- Header Contact Details -->
+                    <div class="text-center border-b border-slate-100 dark:border-slate-800 pb-6 mb-6">
+                        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-500 dark:text-primary-400">TILASHMA NEUPANE</h2>
+                        <p class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">
+                            Tokha, Bagmati, Nepal &nbsp;|&nbsp; <a href="tel:+9767979122" class="hover:underline text-slate-700 dark:text-slate-300">+9767979122</a> &nbsp;|&nbsp; <a href="mailto:tilashmaneupane@gmail.com" class="hover:underline text-primary-500 font-semibold">tilashmaneupane@gmail.com</a>
+                        </p>
+                        <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-xs text-slate-400 dark:text-slate-500 mt-2">
+                            <span><i class="fas fa-globe mr-1"></i> <a href="http://tilashmaneupane.com.np" target="_blank" class="hover:text-primary-500 hover:underline">tilashmaneupane.com.np</a></span>
+                            <span><i class="fab fa-github mr-1"></i> <a href="https://github.com/tilashmaneupane" target="_blank" class="hover:text-primary-500 hover:underline">github.com/tilashmaneupane</a></span>
+                            <span><i class="fab fa-linkedin mr-1"></i> <a href="https://linkedin.com/in/tilashma-neupane" target="_blank" class="hover:text-primary-500 hover:underline">linkedin.com/in/tilashma-neupane</a></span>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 dark:bg-rose-500/10 dark:text-rose-400">Open to Internships</span>
                     </div>
-                    <div class="space-y-4">
+
+                    <!-- Sections Layout -->
+                    <div class="space-y-6">
+                        <!-- Objective -->
                         <div>
-                            <h4 class="font-bold border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">SUMMARY</h4>
-                            <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Highly motivated aspiring frontend engineer based in Kathmandu. Specialized in producing clean semantic layouts, mastering modern stylesheets, and seeking to accelerate capabilities in production-level team architectures.</p>
+                            <h4 class="text-xs font-bold tracking-wider text-primary-500 dark:text-primary-400 uppercase border-b border-primary-500/20 pb-1 mb-2">OBJECTIVE</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm">
+                                Motivated BSc CSIT undergraduate with a solid foundation in programming, web development, and core IT concepts. Seeking an introductory IT or Networking Internship to apply technical problem-solving skills, support day-to-day infrastructure tasks, and gain practical hands-on experience under professional guidance.
+                            </p>
                         </div>
+
+                        <!-- Education -->
                         <div>
-                            <h4 class="font-bold border-b border-slate-200 dark:border-slate-800 pb-1 mb-2">CORE AREAS</h4>
-                            <p class="text-slate-500 dark:text-slate-400">HTML5, CSS3, JavaScript (ES6), Responsive Web Layouts, Git &amp; GitHub, Basic Framework Foundations</p>
+                            <h4 class="text-xs font-bold tracking-wider text-primary-500 dark:text-primary-400 uppercase border-b border-primary-500/20 pb-1 mb-3">EDUCATION</h4>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 dark:text-white">Texas International College</h5>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400">BSc in Computer Science and Information Technology (BSc CSIT) - 2nd Semester Undergraduate</p>
+                                        <span class="text-xs text-slate-400"><i class="fas fa-map-marker-alt mr-1"></i> Chabahil, Kathmandu, Nepal</span>
+                                    </div>
+                                    <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2025 - Present</span>
+                                </div>
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 dark:text-white">Kathmandu Model College (KMC)</h5>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400">Higher Secondary Education (+2 in Science)</p>
+                                        <span class="text-xs text-slate-400"><i class="fas fa-map-marker-alt mr-1"></i> Bagbazar, Kathmandu, Nepal</span>
+                                    </div>
+                                    <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2025 (2082 BS)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical Skills -->
+                        <div>
+                            <h4 class="text-xs font-bold tracking-wider text-primary-500 dark:text-primary-400 uppercase border-b border-primary-500/20 pb-1 mb-3">TECHNICAL SKILLS</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <span class="block text-xs font-bold text-primary-500 dark:text-primary-400 mb-1">Programming &amp; IT Basics</span>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400">C Programming, Core Information Technology Concepts</p>
+                                </div>
+                                <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <span class="block text-xs font-bold text-primary-500 dark:text-primary-400 mb-1">Web Development</span>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400">HTML5, CSS3, JavaScript (Basic)</p>
+                                </div>
+                                <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                                    <span class="block text-xs font-bold text-primary-500 dark:text-primary-400 mb-1">Tools &amp; Version Control</span>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400">Git, GitHub</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projects -->
+                        <div>
+                            <h4 class="text-xs font-bold tracking-wider text-primary-500 dark:text-primary-400 uppercase border-b border-primary-500/20 pb-1 mb-3">PROJECTS</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-baseline">
+                                        <h5 class="font-bold text-slate-900 dark:text-white">Personal Portfolio Website</h5>
+                                        <span class="text-xs text-primary-500 font-semibold">Creator</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mb-1.5"><a href="http://tilashmaneupane.com.np" target="_blank" class="hover:underline"><i class="fas fa-link mr-1"></i> tilashmaneupane.com.np</a></p>
+                                    <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-400 space-y-1 ml-1">
+                                        <li>Developed and deployed a clean, personal portfolio website to present academic milestones and project codebases.</li>
+                                        <li>Utilized standard HTML5 structures and responsive CSS layouts to ensure cross-device consistency and easy navigation.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-baseline">
+                                        <h5 class="font-bold text-slate-900 dark:text-white">Study Plan Web Application</h5>
+                                        <span class="text-xs text-primary-500 font-semibold">Frontend Developer</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mb-1.5"><i class="fab fa-github mr-1"></i> GitHub Pages Deployment</p>
+                                    <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-400 space-y-1 ml-1">
+                                        <li>Designed and launched an interactive client-side application targeted towards assisting fellow students organize daily study trackers.</li>
+                                        <li>Wrote clean UI components with HTML/CSS and structural logic with fundamental JavaScript.</li>
+                                        <li>Managed the version control timeline and publishing cycles entirely via Git and GitHub.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- PAGE 2 OF RESUME -->
+                <div class="relative bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 max-w-2xl mx-auto text-left text-slate-800 dark:text-slate-200 text-sm leading-relaxed">
+                    <!-- Page Number Watermark -->
+                    <span class="absolute top-4 right-6 text-xs font-bold text-slate-300 dark:text-slate-700 tracking-widest">PAGE 2</span>
+                    
+                    <!-- Header Minimal (For continued page) -->
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex justify-between items-center">
+                        <span class="text-xs font-bold text-slate-400 dark:text-slate-500 tracking-wide">TILASHMA NEUPANE</span>
+                        <span class="text-xs text-slate-400 dark:text-slate-500">Contact: tilashmaneupane@gmail.com</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Leadership & Experience -->
+                        <div>
+                            <h4 class="text-xs font-bold tracking-wider text-primary-500 dark:text-primary-400 uppercase border-b border-primary-500/20 pb-1 mb-3">LEADERSHIP &amp; EXPERIENCE</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 dark:text-white">Unified Nexus Student Club</h5>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold text-primary-500">Director</p>
+                                    </div>
+                                    <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">Former Position</span>
+                                </div>
+                                <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-400 space-y-1.5 ml-1">
+                                    <li>Coordinated team operations, delegating operational tasks and assisting in managing student-led initiatives.</li>
+                                    <li>Refined communication, inter-team collaboration, and time-management skills while balancing tight academic timelines.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Core Competencies -->
+                        <div>
+                            <h4 class="text-xs font-bold tracking-wider text-primary-500 dark:text-primary-400 uppercase border-b border-primary-500/20 pb-1 mb-3">CORE COMPETENCIES</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 rounded-lg bg-rose-50 dark:bg-rose-950/30 flex items-center justify-center text-primary-500 flex-shrink-0 mt-0.5">
+                                        <i class="fas fa-check text-xs"></i>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                        <strong>Analytical Troubleshooting:</strong> Strong foundational hardware, system software, and logic troubleshooting capacity.
+                                    </p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 rounded-lg bg-rose-50 dark:bg-rose-950/30 flex items-center justify-center text-primary-500 flex-shrink-0 mt-0.5">
+                                        <i class="fas fa-check text-xs"></i>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                        <strong>Proactive Support:</strong> Proactive learner eager to take on basic network, helpdesk, and infrastructure support workloads.
+                                    </p>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 rounded-lg bg-rose-50 dark:bg-rose-950/30 flex items-center justify-center text-primary-500 flex-shrink-0 mt-0.5">
+                                        <i class="fas fa-check text-xs"></i>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                                        <strong>Adaptability:</strong> Dependable and highly adaptive team contributor with structured problem-solving skills.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info Footer Statement -->
+                        <div class="pt-8 border-t border-slate-100 dark:border-slate-800 text-center">
+                            <p class="text-xs text-slate-400 dark:text-slate-500 italic">References available upon request.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            
             <!-- Modal Footer -->
-            <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-end gap-3 flex-shrink-0">
-                <button onclick="document.getElementById('resume-modal').classList.add('hidden')" class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm">Close</button>
-                <button onclick="downloadResume()" class="px-5 py-2.5 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold flex items-center justify-center text-sm">
-                    Simulate Download <i class="fas fa-download ml-2 text-xs"></i>
-                </button>
+            <div class="p-5 border-t border-slate-150 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex flex-col sm:flex-row justify-between items-center gap-3 flex-shrink-0">
+                <span class="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline"><i class="fas fa-info-circle mr-1"></i> Two-page resume layout generated based on latest credentials.</span>
+                <div class="flex gap-3 w-full sm:w-auto justify-end">
+                    <button onclick="document.getElementById('resume-modal').classList.add('hidden')" class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-150 dark:hover:bg-slate-800 text-sm transition-all">Close</button>
+                    <button onclick="downloadResume()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold flex items-center justify-center text-sm transition-all shadow-md shadow-primary-500/15">
+                        Simulate Download <i class="fas fa-download ml-2 text-xs"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
